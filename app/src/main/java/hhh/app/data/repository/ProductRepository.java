@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import hhh.app.data.bean.Product;
-import hhh.app.data.repository.datasource.ProductDataSource;
+import hhh.app.data.repository.datasource.IDataSource;
 import rx.Observable;
 import rx.Subscriber;
 
@@ -14,27 +14,17 @@ import rx.Subscriber;
  * Created by hhh on 2016/10/28.
  */
 @Singleton
-public class ProductRepository implements ProductDataSource {
+public class ProductRepository implements IDataSource {
 
-    private ProductDataSource remoteDataSource;
-    private ProductDataSource localDataSource;
+    private IDataSource remoteDataSource;
+    private IDataSource localDataSource;
 
     @Inject
-    public ProductRepository(@Remote ProductDataSource remoteDataSource, @Local ProductDataSource localDataSource) {
+    public ProductRepository(@Remote IDataSource remoteDataSource, @Local IDataSource localDataSource) {
         this.remoteDataSource = remoteDataSource;
         this.localDataSource = localDataSource;
     }
 
-
-    @Override
-    public void getProducts(Subscriber<List<Product>> subscriber) {
-        remoteDataSource.getProducts(subscriber);
-    }
-
-    @Override
-    public void getProduct(Subscriber<Product> subscriber, int productId) {
-        remoteDataSource.getProduct(subscriber,productId);
-    }
 
     @Override
     public Observable<List<Product>> productList() {

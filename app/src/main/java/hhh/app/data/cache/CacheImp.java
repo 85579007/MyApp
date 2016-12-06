@@ -6,6 +6,8 @@ import java.io.File;
 
 import hhh.app.data.exception.NotFoundException;
 import hhh.app.data.cache.serializer.JsonSerializer;
+import hhh.app.data.executor.JobExecutor;
+import hhh.app.data.executor.ThreadExecutor;
 import rx.Observable;
 import rx.Subscriber;
 
@@ -22,12 +24,18 @@ public class CacheImp implements ICache {
     private File cacheDir;
     private Context context;
     private JsonSerializer serializer;
+    private ThreadExecutor executor;
 
-    public CacheImp(FileManager fileManager, Context context, JsonSerializer serializer) {
+    public CacheImp(Context context) {
+        this(new FileManager(),context,new JsonSerializer(),new JobExecutor());
+    }
+
+    public CacheImp(FileManager fileManager, Context context, JsonSerializer serializer, ThreadExecutor executor) {
         this.fileManager = fileManager;
         this.cacheDir = context.getCacheDir();
         this.context = context;
         this.serializer = serializer;
+        this.executor=executor;
     }
 
     @Override
@@ -94,5 +102,41 @@ public class CacheImp implements ICache {
 
     private long getLastUpdateTime(){
         return fileManager.getFromPreferences(context,PREFERANCE_FILE_NAME,KEY_NAME);
+    }
+
+    private void executeAsyn(Runnable runnable){
+
+    }
+
+    private static class CacheWriter implements Runnable{
+        private final FileManager fileManager;
+        private final File file;
+        private final String content;
+
+        public CacheWriter(FileManager fileManager, File file, String content) {
+            this.fileManager = fileManager;
+            this.file = file;
+            this.content = content;
+        }
+
+        @Override
+        public void run() {
+            fileManager.writeToFile(file,content);
+        }
+    }
+
+    private static class CacheEvictor implements Runnable{
+        private final FileManager fileManager;
+        private final File cacheDir;
+
+        public CacheEvictor(FileManager fileManager, File cacheDir) {
+            this.fileManager = fileManager;
+            this.cacheDir = cacheDir;
+        }
+
+        @Override
+        public void run() {
+            fileManager.clearDirectory(cacheDir);
+        }
     }
 }

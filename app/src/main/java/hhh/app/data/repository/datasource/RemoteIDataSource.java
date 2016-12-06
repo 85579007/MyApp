@@ -15,13 +15,13 @@ import rx.schedulers.Schedulers;
  * Created by hhh on 2016/10/28.
  */
 
-public class ProductRemoteDataSource implements ProductDataSource {
+public class RemoteIDataSource implements IDataSource {
 //    @Inject Retrofit retrofit;
 //    @Inject OkHttpClient okHttpClient;
 //    @Inject Cache cache;
     ApiService apiService;
 
-    public  ProductRemoteDataSource() {
+    public RemoteIDataSource() {
 //        Gson gson=new GsonBuilder()
 //                .setDateFormat("yyyy-MM-dd HH:mm:ss")
 //                .create();
@@ -59,23 +59,14 @@ public class ProductRemoteDataSource implements ProductDataSource {
                    .subscribe(subscriber);
     }
 
-    @Override
-    public void getProducts(Subscriber<List<Product>> subscriber) {
-        getData(subscriber);
-    }
 
     @Override
-    public void getProduct(Subscriber<Product> subscriber, int productId) {
-
-    }
-
-    @Override
-    public Observable<List<Product>> productList() {
+    public <U> Observable<List<U>> getList() {
         return null;
     }
 
     @Override
-    public Observable<Product> productDetail() {
+    public <U> Observable<U> getDetail() {
         return null;
     }
 }
