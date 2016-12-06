@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <hhh.app.presenter.ui.view.TitleView
+        android:id="@+id/detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"/>
+
+    <hhh.app.presenter.ui.view.MyScrollView
+        android:id="@+id/detail_scrollview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.jude.rollviewpager.RollPagerView
+                    android:id="@+id/rollview"
+                    app:rollviewpager_play_delay="3000"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"/>
+
+                <include
+                    android:id="@+id/buy"
+                    layout="@layout/layout_buy"/>
+
+                <hhh.app.presenter.ui.view.CustomItemView
+                    android:id="@+id/discount"
+                    app:ci_label="促销活动"
+                    app:ci_img="@mipmap/cuxiao"
+                    app:ci_mod_show="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:background="@color/grey_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_height_8" />
+
+                <hhh.app.presenter.ui.view.CustomItemView
+                    android:id="@+id/option"
+                    app:ci_img_show="gone"
+                    app:ci_mod_show="gone"
+                    app:ci_label="选择颜色分类、尺码"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:background="@color/grey_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_height_8" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <hhh.app.presenter.ui.view.CustomItemView
+                        android:id="@+id/rvTitle"
+                        app:ci_label="评价"
+                        app:ci_mod_show="gone"
+                        app:ci_arraw_show="gone"
+                        app:ci_img_show="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <include
+                        android:id="@+id/review"
+                        layout="@layout/layout_review_item"/>
+                    <Button
+                        android:id="@+id/rvbtn"
+                        android:text="查看全部评价"
+                        android:background="@drawable/button_shape"
+                        android:layout_marginLeft="@dimen/item_height_48"
+                        android:layout_marginRight="@dimen/item_height_48"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <include
+                android:id="@+id/buy_top"
+                layout="@layout/layout_buy"/>
+        </FrameLayout>
+
+    </hhh.app.presenter.ui.view.MyScrollView>
+</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/item_height_16"
+
+    android:layout_width="match_parent" 
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/ci_img"
+        android:src="@mipmap/turned"
+        android:layout_marginRight="@dimen/item_height_8"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/item_height_18"
+        android:layout_height="@dimen/item_height_18" />
+    <TextView
+        android:id="@+id/ci_label"
+        android:layout_toRightOf="@id/ci_img"
+        android:layout_centerVertical="true"
+        android:text="Label"
+        android:textSize="@dimen/font_size_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/ci_arraw"
+        android:src="@mipmap/arrow_right_black"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="@dimen/item_height_18"
+        android:layout_height="@dimen/item_height_18" />
+    <TextView
+        android:id="@+id/ci_mod"
+        android:layout_toLeftOf="@id/ci_arraw"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/item_height_8"
+        android:text="修改"
+        android:textSize="@dimen/font_size_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

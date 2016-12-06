@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" 
+    android:layout_height="@dimen/item_height_112">
+    
+    <ImageView
+        android:id="@+id/item_iv"
+        android:layout_margin="@dimen/horizontal_margin"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="@dimen/item_height_80"
+        android:layout_height="@dimen/item_height_80" />
+
+    <RelativeLayout
+        android:layout_toRightOf="@id/item_iv"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height_80">
+
+        <TextView
+            android:id="@+id/item_label"
+            android:text="飞利浦个性太阳框"
+            android:textSize="@dimen/font_size_16"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RatingBar
+            android:id="@+id/item_rating"
+            android:layout_below="@id/item_label"
+            android:layout_marginTop="@dimen/item_height_8"
+            style="?android:attr/ratingBarStyleSmall"
+            android:rating="2.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             />
+
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/item_height_8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/item_special"
+                android:text="￥2,000.00"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/item_price"
+                android:text="￥3,000.00"
+                android:layout_marginLeft="@dimen/item_height_8"
+                android:layout_toRightOf="@id/item_special"
+                android:layout_centerVertical="true"
+                android:textColor="@color/secondary_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/item_sale_count"
+                android:text="已售:110"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/item_height_16"
+                android:layout_centerVertical="true"
+                android:textColor="@color/grey_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

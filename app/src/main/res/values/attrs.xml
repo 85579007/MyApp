@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="TitleView">
+        <attr name="tv_title" format="string"/>
+        <attr name="tv_color" format="color"/>
+        <attr name="tv_titleTextSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomItemView">
+        <attr name="ci_label" format="string"/>
+        <attr name="ci_mod" format="string"/>
+        <attr name="ci_img" format="reference"/>
+
+        <attr name="ci_label_size" format="dimension"/>
+        <attr name="ci_mod_size" format="dimension"/>
+
+        <attr name="ci_label_color" format="color"/>
+        <attr name="ci_mod_color" format="color"/>
+        <attr name="ci_bg_color" format="color"/>
+
+        <attr name="ci_img_show" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+        <attr name="ci_mod_show" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+        <attr name="ci_arraw_show" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="MyImage">
+        <attr name="rating" format="integer"/>
+        <attr name="bg_color" format="color"/>
+        <attr name="img" format="reference"/>
+
+        <attr name="tip_txt" format="string"/>
+        <attr name="tip_bg_color" format="color"/>
+        <attr name="tip_txt_color" format="color"/>
+
+        <attr name="tip_show" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

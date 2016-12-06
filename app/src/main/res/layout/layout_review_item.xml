@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="@dimen/item_height_16"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_marginBottom="@dimen/item_height_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <hhh.app.presenter.ui.view.CircleImageView
+            android:id="@+id/ri_img"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="@dimen/item_height_8"
+            android:src="@mipmap/account"
+            android:layout_width="@dimen/item_height_24"
+            android:layout_height="@dimen/item_height_24" />
+        <TextView
+            android:id="@+id/ri_name"
+            android:layout_toRightOf="@id/ri_img"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/item_height_8"
+            android:text="用户名"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/ri_level_img"
+            android:src="@mipmap/v3"
+            android:layout_toRightOf="@id/ri_name"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/item_height_24"
+            android:layout_height="@dimen/item_height_24" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/ri_content"
+        android:text="评论内容评论内容、评论内容评论内容评论内容评论内容"
+        android:layout_marginBottom="@dimen/item_height_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/ri_rcontent"
+        android:text="回复内容：评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容"
+        android:layout_marginBottom="@dimen/item_height_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/ri_date"
+            android:text="2016-10-1"
+            android:layout_marginRight="@dimen/item_height_16"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/ri_option"
+            android:text="颜色：蓝色  尺寸：32"
+            android:layout_toRightOf="@id/ri_date"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</LinearLayout>
