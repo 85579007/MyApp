@@ -4,9 +4,9 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import hhh.app.data.repository.datasource.IDataSource;
-import hhh.app.data.repository.datasource.LocalIDataSource;
-import hhh.app.data.repository.datasource.RemoteIDataSource;
+import hhh.app.data.repository.datasource.IProductDataSource;
+import hhh.app.data.repository.datasource.LocalIProductDataSource;
+import hhh.app.data.repository.datasource.RemoteIProductDataSource;
 
 /**
  * Created by hhh on 2016/11/23.
@@ -16,14 +16,14 @@ public class ProductRepositoryModule {
     @Singleton
     @Provides
     @Remote
-    IDataSource provideProductRemoteDataSource(){
-        return new RemoteIDataSource();
+    IProductDataSource provideProductRemoteDataSource(){
+        return new RemoteIProductDataSource();
     }
 
     @Singleton
     @Provides
     @Local
-    IDataSource provideProductLocalDataSource(){
-        return new LocalIDataSource();
+    IProductDataSource provideProductLocalDataSource(){
+        return new LocalIProductDataSource();
     }
 }

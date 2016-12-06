@@ -10,7 +10,7 @@ import rx.Observable;
 /**
  * Created by hhh on 2016/10/24.
  */
-public interface ApiService {
+public interface IApiService {
     @GET("getproducts")
     Observable<MyResult<List<Product>>> getProducts();
 

@@ -5,7 +5,7 @@ import android.app.Application;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import hhh.app.data.net.ApiService;
+import hhh.app.data.net.IApiService;
 import hhh.app.data.net.ApiServiceModule;
 
 /**
@@ -15,5 +15,5 @@ import hhh.app.data.net.ApiServiceModule;
 @Component(modules = {AppModule.class, ApiServiceModule.class})
 public interface AppComponent {
     Application getApplication();
-    ApiService getApiService();
+    IApiService getApiService();
 }

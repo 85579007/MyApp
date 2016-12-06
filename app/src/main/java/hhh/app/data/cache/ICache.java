@@ -6,13 +6,8 @@ import rx.Observable;
  * Created by hhh on 2016/12/5.
  */
 public interface ICache {
-    <U> Observable<U> get(final int uid);
+    <U> Observable<U> get(String key, Class<U> cls);
 
-    <U> void put(U entity);
+    <U> void put(String key,U entity);
 
-    boolean isCached(final int uid);
-
-    boolean isExpired();
-
-    void evictAll();
 }

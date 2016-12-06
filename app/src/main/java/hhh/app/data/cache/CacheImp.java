@@ -1,15 +1,23 @@
 package hhh.app.data.cache;
 
 import android.content.Context;
+import android.content.res.Resources;
+
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
+import java.lang.reflect.Type;
+import java.util.List;
 
 import hhh.app.data.exception.NotFoundException;
 import hhh.app.data.cache.serializer.JsonSerializer;
 import hhh.app.data.executor.JobExecutor;
 import hhh.app.data.executor.ThreadExecutor;
 import rx.Observable;
+import rx.Scheduler;
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Administrator on 2016/12/5 0005.
@@ -40,7 +48,7 @@ public class CacheImp implements ICache {
 
     @Override
     public <U> Observable<U> get(final int uid) {
-        Observable observable=Observable.create(new Observable.OnSubscribe<U>() {
+        return Observable.create(new Observable.OnSubscribe<U>() {
             @Override
             public void call(Subscriber<? super U> subscriber) {
                 File file=CacheImp.this.buildFile(uid);
@@ -53,8 +61,29 @@ public class CacheImp implements ICache {
                     subscriber.onError(new NotFoundException());
                 }
             }
-        });
-        return null;
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public <U> Observable<List<U>> getList(){
+        return Observable.create(new Observable.OnSubscribe<List<U>>() {
+            @Override
+            public void call(Subscriber<? super List<U>> subscriber) {
+                String name=new TypeToken<U>(){}.getType().getClass().getName();
+                File file=CacheImp.this.buildFile(name);
+                String content=CacheImp.this.fileManager.readFileContent(file);
+                List<U> list=CacheImp.this.serializer.deserialize(content);
+                if(list!=null){
+                    subscriber.onNext(list);
+                    subscriber.onCompleted();
+                }else{
+                    subscriber.onError(new NotFoundException());
+                }
+            }
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -86,13 +115,17 @@ public class CacheImp implements ICache {
 
     }
 
-    private File buildFile(int uid){
+    private File buildFile(String uid){
         StringBuffer buffer=new StringBuffer();
         buffer.append(cacheDir.getPath());
         buffer.append(File.separator);
         buffer.append(DEFAULT_FILE_NAME);
         buffer.append(uid);
         return new File(buffer.toString());
+    }
+
+    private File buildFile(int uid){
+        return buildFile(String.valueOf(uid));
     }
 
     private void setLastUpdateTime(){

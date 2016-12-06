@@ -59,7 +59,7 @@ public class ProductListActivity extends BaseActivity implements ProductListCont
 
 //    @Override
 //    protected void createPresenter() {
-//        mPrensenter=new ProductListPresenter(ProductRepository.getInstance(RemoteIDataSource.getInstance(), LocalIDataSource.getInstance()));
+//        mPrensenter=new ProductListPresenter(ProductRepository.getInstance(RemoteIProductDataSource.getInstance(), LocalIProductDataSource.getInstance()));
 //    }
 
     @Override

@@ -69,7 +69,7 @@ public class ApiServiceModule {
 
     @Provides
     @Singleton
-    ApiService provideApiService(Retrofit retrofit){
-        return retrofit.create(ApiService.class);
+    IApiService provideApiService(Retrofit retrofit){
+        return retrofit.create(IApiService.class);
     }
 }
